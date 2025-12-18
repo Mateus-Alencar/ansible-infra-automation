@@ -24,15 +24,15 @@ Ambiente utilizado:
 
 ansible-infra-automation/  
 ├── inventories/  
-│   └── hosts.ini  
+│   └── [hosts.ini](./inventories/hosts.ini)  
 ├── playbooks/  
-│   ├── site.yaml  
-│   ├── users.yaml  
-│   ├── docker.yaml  
-│   └── webserver.yaml  
+│   ├── [site.yaml](./playbooks/site.yaml)  
+│   ├── [users.yaml](./playbooks/users.yaml)  
+│   ├── [docker.yaml](./playbooks/docker.yaml)  
+│   └── [webserver.yaml](./playbooks/webserver.yaml)  
 ├── roles/  
-│   ├── users/  
-│   ├── nginx/  
-│   └── docker/  
-├── ansible.cfg  
-└──  README.md  
+│   ├── [users/](./roles/users/)  
+│   ├── [nginx/](./roles/nginx/)  
+│   └── [docker/](./roles/docker/)  
+├── [ansible.cfg](./ansible.cfg)  
+└── [README.md](./README.md)  
