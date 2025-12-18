@@ -1,7 +1,7 @@
 # Ansible Infrastructure Automation 
 ## Provisionamento e Hardening de Servidores Linux
 
-Este projeto tem como objetivo demonstrar o uso do Ansible para automação de **infraestrutura**, realizando o provisionamento completo de servidores Linux de forma padronizada e segura.
+Este projeto tem como objetivo demonstrar o uso do Ansible para automação de **infraestrutura**, realizando o provisionamento completo de servidores Linux de forma padronizada e segura, além de conter uma documentação explicativa e didática sobre as estruturas.
 
 A solução automatiza tarefas comuns do dia a dia de um Analista de **TI / DevOps**, como configuração inicial do sistema, criação de usuários, instalação de serviços e deploy de aplicações, reduzindo erros manuais e garantindo consistência entre os servidores.
 
@@ -23,6 +23,9 @@ Ambiente utilizado:
 ### Estrutura do projeto
 
 ansible-infra-automation/  
+├── Docs 
+│   ├── [Add_Control_Node.md](./Docs/Add_Control_Node.md)  
+│   └── [Ansible_Plugins.md](./Docs/Ansible_Plugins.md)  
 ├── inventories/  
 │   └── [hosts.ini](./inventories/hosts.ini)  
 ├── playbooks/  
