@@ -22,17 +22,17 @@ Ambiente utilizado:
 
 ### Estrutura do projeto
 
-ansible-infra-automation/
-├── inventories/
-│   └── hosts.ini
-├── playbooks/
-│   ├── site.yaml
-│   ├── users.yaml
-│   ├── docker.yaml
-│   └── webserver.yaml
-├── roles/
-│   ├── users/
-│   ├── nginx/
-│   └── docker/
-├── ansible.cfg
-└──  README.md
+ansible-infra-automation/  
+├── inventories/  
+│   └── hosts.ini  
+├── playbooks/  
+│   ├── site.yaml  
+│   ├── users.yaml  
+│   ├── docker.yaml  
+│   └── webserver.yaml  
+├── roles/  
+│   ├── users/  
+│   ├── nginx/  
+│   └── docker/  
+├── ansible.cfg  
+└──  README.md  
