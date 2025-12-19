@@ -1,0 +1,10 @@
+---    # Indica o início do arquivo YAML
+- name: Update Debian Linux Servers - Starting Deploy #  Bloco de execução
+  hosts: targets # Especifica os hosts destino onde as tarefas serão executadas
+  tasks:  # Define o início da lista de tarefas que serão executadas
+    - name: APT | Update System # Nome da tarefa específica
+      ansible.builtin.apt: # Chama o módulo Ansible "apt" (gerenciador de pacotes para distribuições Debian-like)
+        name: "*" # Indica que a operação deve ser aplicada a todos os pacotes instalados
+        state: latest # Define que os pacotes devem ser atualizados para a versão mais recente disponível.
+        update_cache: yes # Atualiza o cache dos pacotes antes de realizar a instalação ou atualização.
+...
