@@ -23,7 +23,7 @@ Ambiente utilizado:
 ### Estrutura do projeto
 
 ansible-infra-automation/  
-├── Docs 
+├── Docs  
 │   ├── [Add_Control_Node.md](./Docs/Add_Control_Node.md)  
 │   └── [Ansible_Plugins.md](./Docs/Ansible_Plugins.md)  
 ├── inventories/  
