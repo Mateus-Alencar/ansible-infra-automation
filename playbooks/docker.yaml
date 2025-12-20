@@ -1,0 +1,59 @@
+---
+- hosts: all
+  become: true
+
+  vars:
+    docker_compose_version: "v2.5.0"  # Define a versão do Docker Compose a ser instalada
+
+  tasks:
+
+    - name: Update apt cache
+      apt: update_cache=yes      # Atualiza o cache do APT
+
+    - name: Install dependencies
+      apt:
+        name: "{{ packages }}"   # Lista de pacotes que serão instalados
+        state: present           # Garante que os pacotes estejam instalados
+        update_cache: yes        # Atualiza o cache antes da instalação
+      vars:
+        packages:
+        - apt-transport-https    # Permite uso de repositórios via HTTPS
+        - ca-certificates        # Necessário para validação de certificados SSL
+        - curl                   # Utilizado para download de arquivos e testes HTTP
+        - software-properties-common # Permite adicionar repositórios ao sistema
+        - gnupg-agent            # Gerencia chaves GPG para repositórios seguros
+
+    - name: Download Docker GPG key
+      get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg # URL da chave pública do Docker
+        dest: /usr/share/keyrings/docker.gpg # Local da chave
+        mode: '0644'                         # Permissões
+
+    - name: Add apt repository for stable version
+      apt_repository:
+        repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu focal stable"
+        state: present           # Garante que o repositório esteja configurado
+        filename: docker         # Nome do arquivo 
+
+    - name: Install Docker
+      apt:
+        name: "{{ packages }}"   # Pacotes 
+        state: present           # Garante que estejam instalados
+        update_cache: yes        # Atualiza o cache após adicionar o repositório
+      vars:
+        packages:
+        - docker-ce              # Docker Engine
+        - docker-ce-cli          # Interface de linha de comando do Docker
+        - containerd.io          # Runtime responsável pelos containers
+
+    - name: Start and enable Docker
+      service:
+        name: docker             # Serviço do Docker
+        state: started
+        enabled: true            # Habilita o Docker para iniciar no boot do sistema
+
+    - name: Download docker-compose {{ docker_compose_version }}
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-x86_64" # URL do binário do Docker Compose
+        dest: /usr/local/bin/docker-compose # Caminho padrão para binários executáveis
+        mode: '0755'              # Permissão de execução para todos os usuários
