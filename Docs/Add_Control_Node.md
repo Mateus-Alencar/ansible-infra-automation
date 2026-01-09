@@ -27,7 +27,7 @@ Isso cria:
 ### Criar usuário jenkins nos targets
 ```bash
 sudo adduser jenkins
-sudo userrmod -aG sudo jenkins
+sudo usermod -aG sudo jenkins
 groups jenkins
 ```
 ### Copiar a chave SSH para os targets
