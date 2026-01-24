@@ -56,12 +56,7 @@ Conteúdo:
 cd home/jenkins/ansible/
 vim ansible.cfg
 ```
-```yaml
-[defaults]
-inventory = hosts.ini
-remote_user = jenkins
-host_key_checking = False
-```
+[Arquivo ansible.cfg](/ansible.cfg)
 ### Testar configurações
 ```bash
 ansible targets -m ping
