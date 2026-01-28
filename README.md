@@ -31,9 +31,9 @@ ansible-infra-automation/
 ├── playbooks/  
 │   ├── [site.yaml](./playbooks/site.yaml)  
 │   ├── [users.yaml](./playbooks/users.yaml)  
+|   ├── [users/](./playbooks/users/)  
 │   └── [docker.yaml](./playbooks/docker.yaml)  
-├── roles/  
-│   ├── [users/](./roles/users/)  
+├── roles/   
 │   ├── [nginx/](./roles/nginx/)  
 │   └── [docker/](./roles/docker/)  
 ├── [ansible.cfg](./ansible.cfg)  
