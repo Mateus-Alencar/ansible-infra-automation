@@ -1,0 +1,24 @@
+---
+# Playbook para criação de usuários no servidor
+- name: Criar usuario e grupo no servidor
+  hosts: all
+  become: true   # Executa as tarefas como root (sudo)
+
+  vars:
+    usuario_nome: "novo_usuario"
+    grupo_nome: "novo_grupo"
+
+  tasks:
+    - name: Criando grupo caso não exista
+      group:
+        name: "{{ grupo_nome }}"
+        state: present
+
+    - name: Criando usuário e associando ao grupo
+      user:
+        name: "{{ usuario_nome }}"
+        group: "{{ grupo_nome }}"
+        shell: /bin/bash
+        create_home: true   # Cria o diretório /home/usuario
+        state: present
+
