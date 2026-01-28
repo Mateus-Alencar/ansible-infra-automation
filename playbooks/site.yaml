@@ -1,0 +1,32 @@
+---
+# Playbook para instalar e configurar Nginx
+- name: Install nginx
+  hosts: target
+  become: true
+
+  tasks:
+  - name: Install nginx on Debian/Ubuntu
+    apt:
+      name: nginx
+      state: present
+      update_cache: true
+    when: ansible_os_family == "Debian"
+
+  - name: Install nginx on RHEL/CentOS
+    yum:
+      name: nginx
+      state: present
+    when: ansible_os_family == "RedHat"
+
+  - name: Insert Index Page
+    template:
+      src: index.html                         # Arquivo template local
+      dest: /usr/share/nginx/html/index.html
+      owner: nginx                            # Define dono do arquivo
+      group: nginx                            # Define grupo do arquivo
+      mode: '0644'                            # Permissões padrão para web
+  # Garante que o serviço nginx esteja iniciado e habilitado no boot
+  - name: Start NGiNX
+    service:
+      name: nginx
+      state: started                          # Inicia automaticamente no boot
