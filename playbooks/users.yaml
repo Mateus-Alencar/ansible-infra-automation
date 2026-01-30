@@ -20,5 +20,5 @@
         group: "{{ grupo_nome }}"
         shell: /bin/bash
         create_home: true   # Cria o diretório /home/usuario
-        state: present
+        state: present      # Garante que esse recurso exista (Idempotência).
 
